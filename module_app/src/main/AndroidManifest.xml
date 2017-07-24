@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.space.app.chili">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".common.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon, android:theme">
+
+        <meta-data
+            android:name="design_width"
+            android:value="1080"></meta-data>
+
+        <meta-data
+            android:name="design_height"
+            android:value="1920"></meta-data>
+
+        <!--im.fir-->
+        <meta-data
+            android:name="BUG_HD_SDK_GENERAL_KEY"
+            android:value="d116cf16cc43f2b824540f539c6d7b91" />
+        <!-- 下载安装APK兼容Android7.0安装 -->
+        <!-- exported:要求必须为false，为true则会报安全异常-->
+        <!-- grantUriPermissions:true，表示授予 URI 临时访问权限-->
+        <!-- authorities 组件标识，按照江湖规矩,都以包名开头,避免和其它应用发生冲突-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.space.app.chili"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+
+        </provider>
+
+        <activity
+            android:name=".LeadActivity"
+            android:theme="@style/AppBaseTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--拍摄-->
+        <activity
+            android:name=".CameraActivity"
+            android:theme="@style/AppBaseTheme.NoActionBar" />
+
+        <!--选择-->
+        <activity
+            android:name="me.iwf.photopicker.PhotoPickerActivity"
+            android:label="@string/select"
+            android:theme="@style/AppBaseTheme.NoActionBar" />
+        <!--预览-->
+        <activity
+            android:name="me.iwf.photopicker.PhotoPagerActivity"
+            android:label="@string/preview"
+            android:theme="@style/AppBaseTheme.NoActionBar" />
+        <!--打印-->
+        <activity
+            android:name=".PrintActivity"
+            android:label="@string/print"
+            android:theme="@style/AppBaseTheme.NoActionBar" />
+
+        <receiver android:name=".download.NotificationReceiver">
+            <intent-filter>
+                <action android:name="notification_clicked" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".download.DownLoadService" />
+
+        <service android:name=".upload.UploadService" />
+
+    </application>
+
+</manifest>

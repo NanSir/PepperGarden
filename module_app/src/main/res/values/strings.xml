@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Chili Camera</string>
+    <string name="print">打印</string>
+    <string name="select">选择</string>
+    <string name="preview">预览</string>
+    <string name="downloaded">&#160;%s %%</string>
+</resources>

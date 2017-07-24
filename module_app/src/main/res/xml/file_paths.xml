@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<files-path/>代表的根目录： Context.getFilesDir()-->
+    <!--<external-path/>代表的根目录: Environment.getExternalStorageDirectory() -->
+    <!-- <cache-path/>代表的根目录: getCacheDir()-->
+    <paths>
+        <external-path
+            name="Download"
+            path="" />
+    </paths>
+    <!--上述代码中path=""，是有特殊意义的，它代码根目录，也就是说你可以向其它的应用共享根目录及其子目录下任何一个文件 -->
+</resources>
